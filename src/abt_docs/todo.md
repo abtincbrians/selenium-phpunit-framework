@@ -1,0 +1,1 @@
+2015-05-01: Get the SeleniumPhp core testing framework (in src/seleniumphp) into a repo, then get setup to install via composer.

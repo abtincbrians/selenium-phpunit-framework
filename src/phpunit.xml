@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- <phpunit bootstrap="./vendor/autoload.php"> -->
+<phpunit bootstrap="Bootstrap.php">
+    <php>
+        <var name="TEST_BROWSER" value="*firefox" />
+    </php>
+    <testsuites>
+        <testsuite name="Localhost Test Suite - Selenium + PHPUnit">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
