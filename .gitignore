@@ -1,4 +1,2 @@
 .idea/
-src/vendor/
-src/tests/config
-!src/tests/config/*.dist
+vendor/

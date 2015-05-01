@@ -13,7 +13,13 @@
         { "type":"composer", "url":"http://satis.atlanticbt.com" }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "phpunit/phpunit": "*",
+        "facebook/webdriver": "dev-master",
+        "phpunit/phpunit-selenium": ">=1.2",
+        "zendframework/zend-config": "2.3.*@dev",
+        "symfony/class-loader": "3.0.*@dev",
+        "atlanticbt/selenium-server-standalone" : "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -21,14 +27,6 @@
             "SeleniumPhp\\Config\\": "src/config/",
             "SeleniumPhp\\Writer\\": "src/writer/"
         }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "*",
-        "facebook/webdriver": "dev-master",
-        "phpunit/phpunit-selenium": ">=1.2",
-        "zendframework/zend-config": "2.3.*@dev",
-        "symfony/class-loader": "3.0.*@dev",
-        "atlanticbt/selenium-server-standalone" : "dev-master"
     },
     "bin": [
         "bin/test.runner.sh"
