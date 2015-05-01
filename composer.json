@@ -28,5 +28,8 @@
         "zendframework/zend-config": "2.3.*@dev",
         "symfony/class-loader": "3.0.*@dev",
         "atlanticbt/selenium-server-standalone" : "dev-master"
-    }
+    },
+    "bin": [
+        "bin/test.runner.sh"
+    ]
 }
