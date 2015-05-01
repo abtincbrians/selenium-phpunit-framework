@@ -1,27 +1,8 @@
 #!/usr/bin/env bash
 
 
-echo "What environment are you testing? Type (prod, dev, local, other), followed by [ENTER]:"
-read environment
-
-if [[ $environment == "prod" ]]
-then
-    url="http://www.armacell.us/"
-elif [[ $environment == "dev" ]]
-then
-    url="http://armacell-01.dev.atlanticbt-server.com/"
-elif [[ $environment == "local" ]]
-then
-    url="http://armacell.dev/"
-elif [[ $environment == "other" ]]
-then
-    echo "Enter the url to test, make sure to include protocol (http://, https://), followed by [ENTER]:"
-    read url
-else
-    echo "Sorry, I did not understand your answer"
-    exit
-fi
-
+echo "Type the URL of the site you want to test, followed by [ENTER]:"
+read url
 
 echo "What browser are you testing? Type (firefox, chrome, other), followed by [ENTER]:"
 read browser
@@ -41,11 +22,6 @@ else
     echo "Sorry, I did not understand your answer"
     exit
 fi
-
-
-#browser="*googlechrome"
-#url="http://www.armacell.us/"
-
 
 # Allows us to define browser to use for testing
 # This could/would be modified for per-browser use (i.e. cross browser compatibility testing)
