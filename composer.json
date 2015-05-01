@@ -7,6 +7,7 @@
             "email": "brian.shirey@atlanticbt.com"
         }
     ],
+    "type": "library",
     "minimum-stability": "dev",
     "repositories": [
         { "type":"composer", "url":"http://satis.atlanticbt.com" }
@@ -21,7 +22,7 @@
             "SeleniumPhp\\Writer\\": "src/writer/"
         }
     },
-    "require": {
+    "require-dev": {
         "phpunit/phpunit": "*",
         "facebook/webdriver": "dev-master",
         "phpunit/phpunit-selenium": ">=1.2",
