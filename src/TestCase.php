@@ -52,12 +52,24 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
         return $this->config;
     }
 
+    protected function getFileConfigurationPath()
+    {
+        $class_info = new \ReflectionClass($this);
+        $configDirectory = dirname($class_info->getFileName()) . '/config/';
+
+        return defined('SELENIUM_CONFIG_PATH') ? SELENIUM_CONFIG_PATH : $configDirectory;
+    }
+
     /**
      * @param string $configDirectory
      * @return array
      */
-    protected function getConfigurationFromFiles($configDirectory = CONFIG_PATH)
+    protected function getConfigurationFromFiles($configDirectory = null)
     {
+        if (!isset($configDirectory)) {
+            $configDirectory = $this->getFileConfigurationPath();
+        }
+
         return
             ArrayUtils::merge(
                 $this->getGlobalConfiguration($configDirectory),
@@ -69,9 +81,13 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
      * @param string $configDirectory
      * @return array
      */
-    protected function getGlobalConfiguration($configDirectory = CONFIG_PATH)
+    protected function getGlobalConfiguration($configDirectory = null)
     {
         $config  = array();
+
+        if (!isset($configDirectory)) {
+            $configDirectory = $this->getFileConfigurationPath();
+        }
 
         // Load global configs (configs marked .global)
         foreach (glob($configDirectory . "{,*.}global.php", GLOB_BRACE) as $filename) {
@@ -88,10 +104,13 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
      * @param string $configDirectory
      * @return array
      */
-    protected function getTestConfiguration($configDirectory = CONFIG_PATH)
+    protected function getTestConfiguration($configDirectory = null)
     {
         $config  = array();
         $testKey = $this->getConfigKey();
+        if (!isset($configDirectory)) {
+            $configDirectory = $this->getFileConfigurationPath();
+        }
 
         // Load tests config files
         foreach (glob($configDirectory . "{,*.}test.php", GLOB_BRACE) as $filename) {
@@ -140,6 +159,6 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
      */
     protected function defineConfigKey()
     {
-       return get_called_class();
+        return get_called_class();
     }
 }
