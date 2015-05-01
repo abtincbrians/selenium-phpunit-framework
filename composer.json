@@ -21,7 +21,7 @@
             "SeleniumPhp\\Writer\\": "src/writer/"
         }
     },
-    "require-dev": {
+    "require": {
         "phpunit/phpunit": "*",
         "facebook/webdriver": "dev-master",
         "phpunit/phpunit-selenium": ">=1.2",
