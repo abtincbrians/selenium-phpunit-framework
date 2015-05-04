@@ -1,35 +1,75 @@
-## Selenium + PHPUnit Blackbox Testing Framework
+## Selenium + PHPUnit Black Box Testing Framework
+=================================================
 
-This is a quick proof-of-concept of how we PHPers at ABT *might* go about doing blackbox integration testing using PHPUnit and Selenium.
+## DESCRIPTION
 
-## Getting Started
+This is a proof-of-concept black box testint framework + test scaffolding that seeks to integrate PHPUnit and Selenium.
 
-* Make sure Java is installed (needed for Selenium Standalone Server)
-* Make sure you have composer installed in the src directory
-    ** url -sS https://getcomposer.org/installer | php
-* Run composer to install external dependencies
-    ** ABT dependencies may be added to composer at a later date/time
-* Write your tests!!!
-    ** Testing conventions should follow PHPUnit conventions
-    ** Tests go in the src/tests directory
-    ** Test class files should be named {SITE}{Page}Test.php
-    ** Test functions should be named test{USE_CASE}
-    ** Tests should use namespace and extend SeleniumPhp\TestCase
-* There's a convenience script called test.runner.sh to run tests
-    ** On command line, run ./test.runner.sh
+## GETTING STARTED
 
-## Motivation
+### Installation
 
-The goal is to help PHP developers ease into blackbox (decidedly NOT unit oriented) testing using Selenium + PHPUnit.
+#### Composer
+
+Add the following to your repositories (in composer.json)
+
+    {
+        "type":"composer",
+        "url":"http://satis.atlanticbt.com"
+    }
+
+Add the following dependency ( require in composer.json)
+
+    "require": {
+        "atlanticbt/selenium-phpunit-framework" : "dev-master"
+    }
+
+Download composer.phar in your project
+
+    curl -sS https://getcomposer.org/installer | php
+
+Install dependencies
+
+    php composer.phar install
+
+
+#### Sample Files
+
+The sample files are optional, depending on your project and project requirements. These instructions assume you have installed the package into the vendor directory of your project root using Composer. If that's not the case, adjust paths accordingly.
+
+Bootstrap
+
+    Copy vendor/atlanticbt/selenium-phpunit-framework/sample/Bootstrap.sample.php into the project root
+    Rename the file to Bootstrap.php
+
+PHPUnit
+
+    Copy vendor/atlanticbt/selenium-phpunit-framework/sample/phpunit.sample.xml into your project root
+    Rename file to phpunit.xml
+    Update appropriately for your project
+
+Tests
+
+    Copy vendor/atlanticbt/selenium-phpunit-framework/sample/tests directory into your project root
+    Copy (and rename) the files in tests/config, remove the .dist extension
+    Update tests/config/global.php with global configuration (such as site base url)
+    Update /tests/config/test.php with test specific configuration
+    Write your tests, you can use tests/SampleHompePageTest.php to start, but eventually you'll want to remove that from your project
+
+
+## MOTIVATION
+
+The goal is to help PHP developers ease into black box (decidedly NOT unit oriented) testing using Selenium + PHPUnit.
 
 ## Contributors
 
+* Brian Shirey <brian.shirey@atlanticbt.com>
 
-## License
+## LICENSE
 
 N/A
 
-## Design
+## DESIGN
 
 * These testing framework doesn't do much yet, and what it does will need refactoring.
 * Primarily, this abstracts out configuration / setup.

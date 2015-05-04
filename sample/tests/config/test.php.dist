@@ -1,0 +1,13 @@
+<?php
+/*
+ * This is where you define configuration for individual tests.
+ * 
+ * Each SeleniumPhpTestCase class will define its own key.
+ * For each test, you'll want to define any test specific
+ * configuration items here.
+ */
+return array(
+    'yourtestkey' => array(
+        'yourtestoption'    => 'yourtestoptionvalue',
+    ),
+);

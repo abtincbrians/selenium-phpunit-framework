@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit bootstrap="Bootstrap.php">
+    <php>
+        <!-- You can configure the test configuration path -->
+        <!-- <const name="SELENIUM_CONFIG_PATH" value="tests/config/"/> -->
+
+        <!-- Sets browser to use for tests -->
+        <var name="TEST_BROWSER" value="*firefox" />
+
+        <!-- Specify site url to use for tests -->
+        <var name="TEST_URL" value="http{s}://{REPLACE_WITH_SITE_URL}" />
+    </php>
+    <testsuites>
+        <testsuite name="Localhost Test Suite - Selenium + PHPUnit">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

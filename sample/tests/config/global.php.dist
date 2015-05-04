@@ -1,0 +1,13 @@
+<?php
+/*
+ * Feel free to modify to suit your needs. At a minimum, we suggest:
+ * - browser: Define the browser to use for testing
+ * - url: Define the base url for your tests
+ *
+ * Copy this file & remove .dist from the name.
+ * Update url for this to be useful.
+ */
+return array(
+    'browser' => '*firefox',
+    'url'     => 'http://www.atlanticbt.com/'
+);
