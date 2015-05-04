@@ -1,6 +1,10 @@
 <?php
 namespace SeleniumPhp\Config;
 
+/**
+ * Class EnvConfig
+ * @package SeleniumPhp\Config
+ */
 class EnvConfig extends AbstractConfig
 {
     /**

@@ -48,6 +48,12 @@ abstract class AbstractConfig implements ConfigInterface
         return $this->child;
     }
 
+    /**
+     * @param $key
+     * @param null $default
+     * @param bool $allowOverride
+     * @return null
+     */
     protected function deferToChild($key, $default = null, $allowOverride = true)
     {
         if (isset($this->child) && $allowOverride) {

@@ -1,6 +1,10 @@
 <?php
 namespace SeleniumPhp\Config;
 
+/**
+ * Class GlobalsConfig
+ * @package SeleniumPhp\Config
+ */
 class GlobalsConfig extends EnvConfig
 {
     /**

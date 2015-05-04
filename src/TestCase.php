@@ -52,6 +52,14 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
         return $this->config;
     }
 
+    /**
+     * Returns the path of the test configuration directory.
+     * - The config path is assumed to be in a subdirectory named config at the same path
+     * as your tests.
+     * - You can override the default location if you define SELENIUM_CONFIG_PATH
+     *
+     * @return string
+     */
     protected function getFileConfigurationPath()
     {
         $class_info = new \ReflectionClass($this);
