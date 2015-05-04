@@ -1,6 +1,6 @@
 {
     "name": "atlanticbt/selenium-phpunit-framework",
-    "description": "This is a Selenium + PHPUnit Framework",
+    "description": "This is a Selenium + PHPUnit Framework and test skeleton",
     "authors": [
         {
             "name": "Brian Shirey",
