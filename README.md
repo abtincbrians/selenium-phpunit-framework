@@ -1,8 +1,6 @@
 ## Selenium + PHPUnit Black Box Testing Framework
 =================================================
 
-## DESCRIPTION
-
 This is a proof-of-concept black box testint framework + test scaffolding that seeks to integrate PHPUnit and Selenium.
 
 ## GETTING STARTED
@@ -39,22 +37,22 @@ The sample files are optional, depending on your project and project requirement
 
 Bootstrap
 
-    Copy vendor/atlanticbt/selenium-phpunit-framework/sample/Bootstrap.sample.php into the project root
-    Rename the file to Bootstrap.php
+* Copy vendor/atlanticbt/selenium-phpunit-framework/sample/Bootstrap.sample.php into the project root
+* Rename the file to Bootstrap.php
 
 PHPUnit
 
-    Copy vendor/atlanticbt/selenium-phpunit-framework/sample/phpunit.sample.xml into your project root
-    Rename file to phpunit.xml
-    Update appropriately for your project
+* Copy vendor/atlanticbt/selenium-phpunit-framework/sample/phpunit.sample.xml into your project root
+* Rename file to phpunit.xml
+* Update appropriately for your project
 
 Tests
 
-    Copy vendor/atlanticbt/selenium-phpunit-framework/sample/tests directory into your project root
-    Copy (and rename) the files in tests/config, remove the .dist extension
-    Update tests/config/global.php with global configuration (such as site base url)
-    Update /tests/config/test.php with test specific configuration
-    Write your tests, you can use tests/SampleHompePageTest.php to start, but eventually you'll want to remove that from your project
+* Copy vendor/atlanticbt/selenium-phpunit-framework/sample/tests directory into your project root
+* Copy (and rename) the files in tests/config, remove the .dist extension
+* Update tests/config/global.php with global configuration (such as site base url)
+* Update /tests/config/test.php with test specific configuration
+* Write your tests, you can use tests/SampleHompePageTest.php to start, but eventually you'll want to remove that from your project
 
 
 ## MOTIVATION
