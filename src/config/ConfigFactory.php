@@ -14,11 +14,20 @@ use Zend\Stdlib\ArrayUtils;
 class ConfigFactory
 {
     // Hold an instance of the class
+    /**
+     * @var
+     */
     private static $instance;
 
+    /**
+     * @var
+     */
     protected $configFilePath;
 
     // The singleton method
+    /**
+     * @return ConfigFactory
+     */
     public static function getInstance()
     {
         if (!isset(self::$instance)) {
@@ -49,6 +58,9 @@ class ConfigFactory
         return $this->configFilePath;
     }
 
+    /**
+     * @param array $options
+     */
     public function setup($options = array())
     {
         if (isset($options['configurationFilePath'])) {
@@ -56,6 +68,10 @@ class ConfigFactory
         }
     }
 
+    /**
+     * @param null $context
+     * @return FileConfig
+     */
     public function getConfiguration($context = null)
     {
         $config = new FileConfig($this->getConfigurationFromFiles($context));
@@ -67,6 +83,10 @@ class ConfigFactory
     }
 
 
+    /**
+     * @param null $context
+     * @return mixed
+     */
     public function getConfigurationFromFiles($context = null)
     {
         return
@@ -76,6 +96,9 @@ class ConfigFactory
             );
     }
 
+    /**
+     * @return array
+     */
     protected function getGlobalConfiguration()
     {
         $config  = array();
@@ -92,7 +115,11 @@ class ConfigFactory
     }
 
 
-   protected function getTestConfiguration($context = null)
+    /**
+     * @param null $context
+     * @return array
+     */
+    protected function getTestConfiguration($context = null)
     {
         $config  = array();
 
