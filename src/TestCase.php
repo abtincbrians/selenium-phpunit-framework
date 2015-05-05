@@ -1,12 +1,10 @@
 <?php
 namespace SeleniumPhp;
 
-use SeleniumPhp\Config\FileConfig;
-use SeleniumPhp\Config\GlobalsConfig;
-use SeleniumPhp\Config\EnvConfig;
-use SeleniumPhp\Writer\Writer;
-use Zend\Stdlib\ArrayUtils;
+use SeleniumPhp\Config\ConfigFactory;
+use SeleniumPhp\Config\ConfigInterface;
 use PHPUnit_Extensions_SeleniumTestCase;
+use SeleniumPhp\Writer\Writer; // Leave this in place for dev purposes
 
 /**
  * Class TestCase
@@ -18,122 +16,42 @@ use PHPUnit_Extensions_SeleniumTestCase;
 abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
 {
     /**
-     * @var
+     * @var ConfigInterface
      */
     protected $config;
 
     /**
-     * @var
+     * @var string
      */
     protected $configKey;
 
     /**
-     * @param this
+     * @param ConfigInterface $config
+     * @return mixed
      */
-    public function setConfig($config)
+    public function setConfig(ConfigInterface $config)
     {
         $this->config = $config;
 
-        return $this->config;
+        return this;
     }
 
     /**
-     * @return mixed
+     * @return ConfigInterface
      */
     public function getConfig()
     {
         if (!isset($this->config)) {
-            $this->config = new FileConfig($this->getConfigurationFromFiles());
-            $this->config
-                ->push(new GlobalsConfig())
-                ->push(new EnvConfig());
+            $this->config =
+                ConfigFactory::getinstance()
+                    ->getConfiguration($this->getConfigKey());
         }
 
         return $this->config;
     }
 
     /**
-     * Returns the path of the test configuration directory.
-     * - The config path is assumed to be in a subdirectory named config at the same path
-     * as your tests.
-     * - You can override the default location if you define SELENIUM_CONFIG_PATH
-     *
-     * @return string
-     */
-    protected function getFileConfigurationPath()
-    {
-        $class_info = new \ReflectionClass($this);
-        $configDirectory = dirname($class_info->getFileName()) . '/config/';
-
-        return defined('SELENIUM_CONFIG_PATH') ? SELENIUM_CONFIG_PATH : $configDirectory;
-    }
-
-    /**
-     * @param string $configDirectory
-     * @return array
-     */
-    protected function getConfigurationFromFiles($configDirectory = null)
-    {
-        if (!isset($configDirectory)) {
-            $configDirectory = $this->getFileConfigurationPath();
-        }
-
-        return
-            ArrayUtils::merge(
-                $this->getGlobalConfiguration($configDirectory),
-                $this->getTestConfiguration($configDirectory)
-            );
-    }
-
-    /**
-     * @param string $configDirectory
-     * @return array
-     */
-    protected function getGlobalConfiguration($configDirectory = null)
-    {
-        $config  = array();
-
-        if (!isset($configDirectory)) {
-            $configDirectory = $this->getFileConfigurationPath();
-        }
-
-        // Load global configs (configs marked .global)
-        foreach (glob($configDirectory . "{,*.}global.php", GLOB_BRACE) as $filename) {
-            if (is_readable($filename)) {
-                $tempConfig = include $filename;
-                $config     = ArrayUtils::merge($config, $tempConfig);
-            }
-        }
-
-        return $config;
-    }
-
-    /**
-     * @param string $configDirectory
-     * @return array
-     */
-    protected function getTestConfiguration($configDirectory = null)
-    {
-        $config  = array();
-        $testKey = $this->getConfigKey();
-        if (!isset($configDirectory)) {
-            $configDirectory = $this->getFileConfigurationPath();
-        }
-
-        // Load tests config files
-        foreach (glob($configDirectory . "{,*.}test.php", GLOB_BRACE) as $filename) {
-            if (is_readable($filename)) {
-                $testsConfig = include $filename;
-                $testConfig  = isset($testsConfig[$testKey]) ? $testsConfig[$testKey] : array();
-                $config      = ArrayUtils::merge($config, $testConfig);
-            }
-        }
-
-        return $config;
-    }
-
-    /**
-     * @param $configKey
+     * @param string $configKey
      * @return $this
      */
     public function setConfigKey($configKey)
@@ -143,7 +61,7 @@ abstract class TestCase extends PHPUnit_Extensions_SeleniumTestCase
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getConfigKey()
     {

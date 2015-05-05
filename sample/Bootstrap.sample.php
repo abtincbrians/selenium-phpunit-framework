@@ -33,6 +33,7 @@ require_once('./vendor/autoload.php');
 
 // You can write if you want to, you can Write::write('Write::write(\'write\'));
 use SeleniumPhp\Writer\Writer;
+use SeleniumPhp\Config\ConfigFactory;
 
 /**
  * Class Bootstrap
@@ -42,11 +43,23 @@ class Bootstrap
     /**
      * Add your initialization routine here.
      */
-    public static function init()
+    public static function init($options = array())
     {
+        ConfigFactory::getInstance()->setup($options);
         Writer::write('Bootstrap::init() complete');
     }
 }
 
 // Init all the things
-Bootstrap::init();
+Bootstrap::init(
+    array(
+        // Modify this to set project appropriate configuration file path
+        // Default assumption is that your test runner or phpunit.xml file
+        // will define SELENIUM_PHP_TEST_CONFIG_PATH or that your test
+        // configuration is in the /tests/config/ directory.
+        'configurationFilePath' =>
+            defined('SELENIUM_PHP_TEST_CONFIG_PATH') ?
+                SELENIUM_PHP_TEST_CONFIG_PATH :
+                __DIR__ . '/tests/config/',
+    )
+);

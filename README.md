@@ -33,12 +33,13 @@ Install dependencies
 
 #### Sample Files
 
-The sample files are optional, depending on your project and project requirements. These instructions assume you have installed the package into the vendor directory of your project root using Composer. If that's not the case, adjust paths accordingly.
+The sample files are (semi) optional, depending on your project and project requirements. These instructions assume you have installed the package into the vendor directory of your project root using Composer. If that's not the case, adjust paths accordingly. If you have your own bootstrap file, you'll need to port code that defines the configuration file path.
 
 Bootstrap
 
 * Copy vendor/atlanticbt/selenium-phpunit-framework/sample/Bootstrap.sample.php into the project root
 * Rename the file to Bootstrap.php
+* Update configurationFilePath to suit your needs, by default assumes your test configs are in the ./tests/config/ directory
 
 PHPUnit
 
