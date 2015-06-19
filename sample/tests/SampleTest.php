@@ -20,7 +20,7 @@ class SampleTest extends TestCase
         $this->setBrowser($this->getConfig()->getConfiguredValue('browser'));
         $this->setBrowserUrl($this->getConfig()->getConfiguredValue('url'));
         $this->setHost($this->getConfig()->getConfiguredValue('host'));
-        $this->setPort($this->getConfig()->getConfiguredValue('port'));
+        $this->setPort(intval($this->getConfig()->getConfiguredValue('port')));
     }
 
     /**
