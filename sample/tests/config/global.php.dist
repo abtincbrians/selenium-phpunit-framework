@@ -8,6 +8,8 @@
  * Update url for this to be useful.
  */
 return array(
-    'browser' => '*firefox',
-    'url'     => 'http://www.atlanticbt.com/'
+    'browser' => 'firefox',
+    'url'     => 'http://www.atlanticbt.com/',
+    'host'    => '127.0.0.1',
+    'port'    => '4444'
 );

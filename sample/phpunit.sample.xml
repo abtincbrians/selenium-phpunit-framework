@@ -5,10 +5,10 @@
         <!-- <const name="SELENIUM_CONFIG_PATH" value="tests/config/"/> -->
 
         <!-- Sets browser to use for tests -->
-        <var name="TEST_BROWSER" value="*firefox" />
+        <!-- <var name="TEST_BROWSER" value="firefox" /> -->
 
         <!-- Specify site url to use for tests -->
-        <var name="TEST_URL" value="http{s}://{REPLACE_WITH_SITE_URL}" />
+        <!-- <var name="TEST_URL" value="http{s}://{REPLACE_WITH_SITE_URL}" /> -->
     </php>
     <testsuites>
         <testsuite name="Localhost Test Suite - Selenium + PHPUnit">

@@ -9,10 +9,10 @@ read browser
 
 if [[ $browser == "firefox" ]]
 then
-    browser="*firefox"
+    browser="firefox"
 elif [[ $browser == "chrome" ]]
 then
-    browser="*googlechrome"
+    browser="chrome"
 elif [[ $browser == "other" ]]
 then
     echo "Enter the browser to test, followed by [ENTER]:"
@@ -33,7 +33,7 @@ export TEST_URL="$url"
 
 
 # Start Selenium server
-java -jar vendor/bin/selenium-server-standalone.jar &
+java -jar vendor/bin/selenium-server-standalone.jar -Dwebdriver.chrome.driver=vendor/bin/chromedriver &
 last_pid=$!
 
 # Wait, then run tests
