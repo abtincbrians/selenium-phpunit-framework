@@ -53,7 +53,7 @@ Tests
 * Copy (and rename) the files in tests/config, remove the .dist extension
 * Update tests/config/global.php with global configuration (such as site base url)
 * Update /tests/config/test.php with test specific configuration
-* Write your tests, you can use tests/SampleHompePageTest.php to start, but eventually you'll want to remove that from your project
+* Write your tests, you can use tests/SampleTest.php to start, but eventually you'll want to remove that from your project
 
 
 ## MOTIVATION
