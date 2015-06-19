@@ -9,7 +9,7 @@ use SeleniumPhp\TestCase;
  * this in your real test suite. This will get you started.
  *
  */
-class SampleHomePageTest extends TestCase
+class SampleTest extends TestCase
 {
     /**
      * Setup Function. This is where you run any functionality required to
@@ -28,8 +28,14 @@ class SampleHomePageTest extends TestCase
      */
     public function testHomePageLoads()
     {
-        $this->open("");
-        $this->selectWindow("null");
-        $this->assertContains($this->getConfig()->getConfiguredValue('pageTitle'), $this->getTitle());
+        $this->url("/");
+
+        $this->waitUntil(function($testCase) {
+            if (strlen($testCase->source()) > 0) {
+                return true;
+            }
+        }, 0);
+
+        $this->assertNotEmpty($this->source());
     }
 }
