@@ -9,6 +9,12 @@
 
         <!-- Specify site url to use for tests -->
         <!-- <var name="TEST_URL" value="http{s}://{REPLACE_WITH_SITE_URL}" /> -->
+
+        <!-- Specify host to use for tests -->
+        <!-- <var name="TEST_HOST" value="127.0.0.1" /> -->
+
+        <!-- Specify port to use for tests -->
+        <!-- <var name="TEST_PORT" value="4444" /> -->
     </php>
     <testsuites>
         <testsuite name="Localhost Test Suite - Selenium + PHPUnit">

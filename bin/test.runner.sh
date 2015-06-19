@@ -31,6 +31,9 @@ export TEST_BROWSER="$browser"
 # This would/could be modified for per-environment use (i.e. vagrant, dev, staging, production)
 export TEST_URL="$url"
 
+# NOTE: For simplicity, test runner doesn't ask for host & port, these are assumed defaults
+export TEST_HOST = "127.0.0.1"
+export TEST_PORT = 4444
 
 # Start Selenium server
 java -jar vendor/bin/selenium-server-standalone.jar -Dwebdriver.chrome.driver=vendor/bin/chromedriver &
