@@ -18,6 +18,7 @@
     </php>
     <testsuites>
         <testsuite name="Localhost Test Suite - Selenium + PHPUnit">
+            <!-- This would be subject to change depending on your project / circumstances -->
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
