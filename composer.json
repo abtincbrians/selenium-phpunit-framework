@@ -29,6 +29,7 @@
         }
     },
     "bin": [
-        "bin/test.runner.sh"
+        "bin/test.runner.sh",
+        "bin/chromedriver"
     ]
 }
