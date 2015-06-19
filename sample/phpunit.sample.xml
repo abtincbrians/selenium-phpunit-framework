@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- Bootstrap locations is subject to change depending on your project / circumstances -->
 <phpunit bootstrap="Bootstrap.php">
     <php>
         <!-- You can configure the test configuration path -->
