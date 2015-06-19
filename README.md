@@ -1,7 +1,7 @@
 ## Selenium + PHPUnit Black Box Testing Framework
 =================================================
 
-This is a proof-of-concept black box testint framework + test scaffolding that seeks to integrate PHPUnit and Selenium.
+This is a proof-of-concept black box testing framework + test scaffolding that seeks to integrate PHPUnit and Selenium.
 
 ## GETTING STARTED
 
@@ -16,11 +16,12 @@ Add the following to your repositories (in composer.json)
         "url":"http://satis.atlanticbt.com"
     }
 
-Add the following dependency ( require in composer.json)
+Add the following dependency (require in composer.json)
 
     "require": {
-        "atlanticbt/selenium-phpunit-framework" : "dev-master"
+        "atlanticbt/selenium-phpunit-framework" : "dev-feature/selenium2-test-case-web-driver"
     }
+NOTE: This value for the release is subject to change, currently dev-feature/selenium2-test-case-web-driver is a beta version geared towards Selenium 2
 
 Download composer.phar in your project
 
@@ -85,3 +86,13 @@ N/A
         *** For instance, set in test.runner.sh
 * Configuration precedence is (highest to lowest) Environment Variables overwrite GLOBALS overwrite Test Configurations overwrite Global Configurations
 * This setup allows environment specific values so that we can use the test runner to run the tests on different environments (production versus develop server versus local vagrant)
+
+## Additional Notes
+
+When you run composer in your project, you will be provided with a sample test runner shell script at /vendor/bin/test.runner.sh
+The test runner is designed for local testing, such as you want to run the tests on your local machine or within vagrant
+The PHPUnit sample file can be used to configure the tests in other environments, for instance on Jenkins
+
+## Final Thoughts
+
+All typos are intentional
