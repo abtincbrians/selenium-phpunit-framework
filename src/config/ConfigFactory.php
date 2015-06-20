@@ -18,6 +18,18 @@ use SeleniumPhp\Config\GlobalFileConfig;
  */
 class ConfigFactory extends BaseFactory
 {
+    protected static $instance;
+
+    /**
+     * @return ConfigFactory
+     */
+    public static function getInstance()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
     /**
      * You need to call setup before using this baby.
      *
