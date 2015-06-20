@@ -1,69 +1,23 @@
 <?php
 namespace SeleniumPhp\Config;
 
-use SeleniumPhp\Config\ConfigInterface;
-use SeleniumPhp\Config\GenericConfig;
+use HierarchicalConfig\Config\ConfigInterface;
+use HierarchicalConfig\Config\ConfigFactory as BaseFactory;
+use HierarchicalConfig\Config\GenericConfig;
+use HierarchicalConfig\Config\GlobalsConfig;
+use HierarchicalConfig\Config\EnvConfig;
+use HierarchicalConfig\Writer\Writer;
+
 use SeleniumPhp\Config\TestFileConfig;
 use SeleniumPhp\Config\GlobalFileConfig;
-use SeleniumPhp\Config\GlobalsConfig;
-use SeleniumPhp\Config\EnvConfig;
-use SeleniumPhp\Writer\Writer;
 
 
 /**
  * Class ConfigFactory
  * @package SeleniumPhp\Config
  */
-class ConfigFactory
+class ConfigFactory extends BaseFactory
 {
-    // Hold an instance of the class
-    /**
-     * @var
-     */
-    private static $instance;
-
-    protected $options = array();
-
-
-    // The singleton method
-    /**
-     * @return ConfigFactory
-     */
-    public static function getInstance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-    /**
-     * @param null $context
-     * @return ConfigInterface
-     */
-    public function getConfig($context = null)
-    {
-        return $this->initConfig($context);
-    }
-
-    /**
-     * @param array $options
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->options = $options;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
-
     /**
      * You need to call setup before using this baby.
      *

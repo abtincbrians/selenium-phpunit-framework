@@ -32,7 +32,7 @@ error_reporting(E_ALL | E_STRICT);
 require_once('./vendor/autoload.php');
 
 // You can write if you want to, you can Write::write('Write::write(\'write\'));
-use SeleniumPhp\Writer\Writer;
+use HierarchicalConfig\Writer\Writer;
 use SeleniumPhp\Config\ConfigFactory;
 
 /**

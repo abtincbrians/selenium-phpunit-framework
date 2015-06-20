@@ -19,13 +19,14 @@
         "phpunit/phpunit-selenium": ">=1.2",
         "zendframework/zend-config": "2.3.*@dev",
         "symfony/class-loader": "3.0.*@dev",
-        "atlanticbt/selenium-server-standalone" : "2.46.0"
+        "atlanticbt/selenium-server-standalone" : "2.46.0",
+        "bshirey/heirarchichal-config" : "dev-master"
+
     },
     "autoload": {
         "psr-4": {
             "SeleniumPhp\\": "src/",
-            "SeleniumPhp\\Config\\": "src/config/",
-            "SeleniumPhp\\Writer\\": "src/writer/"
+            "SeleniumPhp\\Config\\": "src/config/"
         }
     },
     "bin": [
