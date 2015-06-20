@@ -18,18 +18,14 @@ use SeleniumPhp\Config\GlobalFileConfig;
  */
 class ConfigBuilder implements ConfigBuilderInterface
 {
-    public function build($context = null)
+    public function build($options = array())
     {
-        if (isset($context)) {
-            $this->options[ConfigFactory::KEY_CONTEXT] = $context;
-        }
-
-        $config = new GenericConfig($this->getOptions());
+        $config = new GenericConfig($options);
         $config
-            ->push(new GlobalFileConfig($this->getOptions()))
-            ->push(new TestFileConfig($this->getOptions()))
-            ->push(new GlobalsConfig($this->getOptions()))
-            ->push(new EnvConfig($this->getOptions()));
+            ->push(new GlobalFileConfig($options))
+            ->push(new TestFileConfig($options))
+            ->push(new GlobalsConfig($options))
+            ->push(new EnvConfig($options));
 
         return $config;
     }
