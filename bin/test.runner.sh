@@ -25,15 +25,15 @@ fi
 
 # Allows us to define browser to use for testing
 # This could/would be modified for per-browser use (i.e. cross browser compatibility testing)
-export TEST_BROWSER="$browser"
+export HCENV_BROWSER="$browser"
 
 # Allows us to define the base URL for our tests
 # This would/could be modified for per-environment use (i.e. vagrant, dev, staging, production)
-export TEST_URL="$url"
+export HCENV_URL="$url"
 
 # NOTE: For simplicity, test runner doesn't ask for host & port, these are assumed defaults
-export TEST_HOST = "127.0.0.1"
-export TEST_PORT = 4444
+export HCENV_HOST = "127.0.0.1"
+export HCENV_PORT = 4444
 
 # Start Selenium server
 java -jar vendor/bin/selenium-server-standalone.jar -Dwebdriver.chrome.driver=vendor/bin/chromedriver &
