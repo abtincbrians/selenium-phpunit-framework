@@ -7,7 +7,7 @@ use Zend\Config\Config;
  * Class AbstractConfig
  * @package SeleniumPhp\Config
  */
-class GenericConfig implements ConfigInterface
+class GenericConfig implements AbstractInterface
 {
     const DEFAULT_RETURN = null;
 
