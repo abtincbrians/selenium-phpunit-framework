@@ -2,7 +2,7 @@
 namespace SeleniumPhp\Config;
 
 use HierarchicalConfig\Config\ConfigInterface;
-use HierarchicalConfig\Config\ConfigFactory as BaseFactory;
+use HierarchicalConfig\Config\ConfigBuilderInterface;
 use HierarchicalConfig\Config\GenericConfig;
 use HierarchicalConfig\Config\GlobalsConfig;
 use HierarchicalConfig\Config\EnvConfig;
@@ -16,27 +16,9 @@ use SeleniumPhp\Config\GlobalFileConfig;
  * Class ConfigFactory
  * @package SeleniumPhp\Config
  */
-class ConfigFactory extends BaseFactory
+class ConfigBuilder implements ConfigBuilderInterface
 {
-    protected static $instance;
-
-    /**
-     * @return ConfigFactory
-     */
-    public static function getInstance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-    /**
-     * You need to call setup before using this baby.
-     *
-     * @param string $context
-     * @return ConfigInterface
-     */
-    protected function initConfig($context = null)
+    public function build($context = null)
     {
         if (isset($context)) {
             $this->options[ConfigFactory::KEY_CONTEXT] = $context;
