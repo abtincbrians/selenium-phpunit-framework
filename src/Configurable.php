@@ -36,8 +36,7 @@ trait Configurable
     {
         if (!isset($this->config)) {
             $this->config =
-                ConfigFactory::getinstance()
-                    ->getConfiguration($this->getConfigKey());
+                ConfigFactory::getInstance()->getConfig($this->getConfigKey());
         }
 
         return $this->config;

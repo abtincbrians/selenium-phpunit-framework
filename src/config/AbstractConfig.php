@@ -36,7 +36,6 @@ abstract class AbstractConfig implements ConfigInterface
         $this->config = new Config($config);
     }
 
-
     /**
      * @param ConfigInterface $config
      * @return ConfigInterface

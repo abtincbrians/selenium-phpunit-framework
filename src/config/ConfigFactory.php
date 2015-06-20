@@ -1,11 +1,14 @@
 <?php
 namespace SeleniumPhp\Config;
 
-use SeleniumPhp\Config\FileConfig;
+use SeleniumPhp\Config\ConfigInterface;
+use SeleniumPhp\Config\GenericConfig;
+use SeleniumPhp\Config\TestFileConfig;
+use SeleniumPhp\Config\GlobalFileConfig;
 use SeleniumPhp\Config\GlobalsConfig;
 use SeleniumPhp\Config\EnvConfig;
 use SeleniumPhp\Writer\Writer;
-use Zend\Stdlib\ArrayUtils;
+
 
 /**
  * Class ConfigFactory
@@ -19,10 +22,8 @@ class ConfigFactory
      */
     private static $instance;
 
-    /**
-     * @var
-     */
-    protected $configFilePath;
+    protected $options = array();
+
 
     // The singleton method
     /**
@@ -37,102 +38,50 @@ class ConfigFactory
     }
 
     /**
-     * @param string $configFilePath
-     * @return this
+     * @param null $context
+     * @return ConfigInterface
      */
-    public function setConfigFilePath($configFilePath)
+    public function getConfig($context = null)
     {
-        $this->configFilePath = $configFilePath;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConfigFilePath()
-    {
-        if (!isset($this->configFilePath)) {
-            $this->configFilePath = __DIR__ . '/config/';
-        }
-
-        return $this->configFilePath;
+        return $this->initConfig($context);
     }
 
     /**
      * @param array $options
+     * @return $this
      */
-    public function setup($options = array())
+    public function setOptions($options)
     {
-        if (isset($options['configurationFilePath'])) {
-            $this->configFilePath = $options['configurationFilePath'];
-        }
+        $this->options = $options;
+        return $this;
     }
 
     /**
-     * @param null $context
-     * @return FileConfig
+     * @return array
      */
-    public function getConfiguration($context = null)
+    public function getOptions()
     {
-        $config = new FileConfig($this->getConfigurationFromFiles($context));
+        return $this->options;
+    }
+
+    /**
+     * You need to call setup before using this baby.
+     *
+     * @param string $context
+     * @return ConfigInterface
+     */
+    protected function initConfig($context = null)
+    {
+        if (isset($context)) {
+            $this->options[ConfigFactory::KEY_CONTEXT] = $context;
+        }
+
+        $config = new GenericConfig($this->getOptions());
         $config
-            ->push(new GlobalsConfig())
-            ->push(new EnvConfig());
-
-        return $config;
-    }
-
-
-    /**
-     * @param null $context
-     * @return mixed
-     */
-    public function getConfigurationFromFiles($context = null)
-    {
-        return
-            ArrayUtils::merge(
-                $this->getGlobalConfiguration(),
-                $this->getTestConfiguration($context)
-            );
-    }
-
-    /**
-     * @return array
-     */
-    protected function getGlobalConfiguration()
-    {
-        $config  = array();
-
-        // Load global configs (configs marked .global)
-        foreach (glob($this->getConfigFilePath() . "{,*.}global.php", GLOB_BRACE) as $filename) {
-            if (is_readable($filename)) {
-                $tempConfig = include $filename;
-                $config     = ArrayUtils::merge($config, $tempConfig);
-            }
-        }
-
-        return $config;
-    }
-
-
-    /**
-     * @param null $context
-     * @return array
-     */
-    protected function getTestConfiguration($context = null)
-    {
-        $config  = array();
-
-        if (isset($context) && is_string($context)) {
-            // Load tests config files
-            foreach (glob($this->getConfigFilePath() . "{,*.}test.php", GLOB_BRACE) as $filename) {
-                if (is_readable($filename)) {
-                    $testsConfig = include $filename;
-                    $testConfig  = isset($testsConfig[$context]) ? $testsConfig[$context] : array();
-                    $config      = ArrayUtils::merge($config, $testConfig);
-                }
-            }
-        }
+            ->push(new GlobalFileConfig($this->getOptions()))
+            ->push(new TestFileConfig($this->getOptions()))
+            ->push(new GlobalsConfig($this->getOptions()))
+            ->push(new EnvConfig($this->getOptions()));
 
         return $config;
     }

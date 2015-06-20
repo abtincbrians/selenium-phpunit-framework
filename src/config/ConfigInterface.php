@@ -7,6 +7,8 @@ namespace SeleniumPhp\Config;
  */
 Interface ConfigInterface
 {
+    const KEY_CONTEXT = 'context';
+
     /**
      * @param $key
      * @param null $default

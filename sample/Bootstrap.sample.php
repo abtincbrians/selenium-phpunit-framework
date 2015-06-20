@@ -45,7 +45,7 @@ class Bootstrap
      */
     public static function init($options = array())
     {
-        ConfigFactory::getInstance()->setup($options);
+        ConfigFactory::getInstance()->setOptions($options);
         Writer::write('Bootstrap::init() complete');
     }
 }
