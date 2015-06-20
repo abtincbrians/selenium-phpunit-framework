@@ -20,7 +20,7 @@
         "zendframework/zend-config": "2.3.*@dev",
         "symfony/class-loader": "3.0.*@dev",
         "atlanticbt/selenium-server-standalone" : "2.46.0",
-        "bshirey/heirarchichal-config" : "dev-master"
+        "bshirey/hierarchical-config" : "dev-master"
 
     },
     "autoload": {
