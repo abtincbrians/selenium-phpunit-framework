@@ -32,8 +32,9 @@ error_reporting(E_ALL | E_STRICT);
 require_once('./vendor/autoload.php');
 
 // You can write if you want to, you can Write::write('Write::write(\'write\'));
-use SeleniumPhp\Writer\Writer;
-use SeleniumPhp\Config\ConfigFactory;
+use HierarchicalConfig\Writer\Writer;
+use HierarchicalConfig\Config\ConfigFactory;
+use SeleniumPhp\Config\ConfigBuilder;
 
 /**
  * Class Bootstrap
@@ -45,7 +46,9 @@ class Bootstrap
      */
     public static function init($options = array())
     {
-        ConfigFactory::getInstance()->setOptions($options);
+        ConfigFactory::getInstance()
+            ->setOptions($options)
+            ->setBuilder(new ConfigBuilder());
         Writer::write('Bootstrap::init() complete');
     }
 }
