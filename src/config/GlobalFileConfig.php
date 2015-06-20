@@ -3,8 +3,9 @@ namespace SeleniumPhp\Config;
 
 use HierarchicalConfig\Config\FileConfig;
 use Zend\Stdlib\ArrayUtils;
+
 /**
- * Class FileConfig
+ * Class GlobalFileConfig
  * @package SeleniumPhp\Config
  */
 class GlobalFileConfig extends FileConfig

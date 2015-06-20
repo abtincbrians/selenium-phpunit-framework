@@ -5,7 +5,7 @@ use HierarchicalConfig\Config\FileConfig;
 use Zend\Stdlib\ArrayUtils;
 
 /**
- * Class FileConfig
+ * Class TestFileConfig
  * @package SeleniumPhp\Config
  */
 class TestFileConfig extends FileConfig
